@@ -1,0 +1,25 @@
+clc;
+clear all;
+close all;
+
+v = 0:1:50; 
+r1 = 5; 
+r2 = 10; 
+
+i = v / (r1 + r2);
+vr1 = (r1 / (r1 + r2)) * v; 
+vr2 = (r2 / (r1 + r2)) * v; 
+
+subplot(3, 3, 2);
+plot(v, vr1, 'r', v, vr2, 'b');
+xlabel('Voltage (V)');
+ylabel('Voltage across Resistors (V)');
+legend('r1 = 5 ohm', 'r2 = 10 ohm'); 
+title('Voltage Distribution');
+
+
+subplot(3, 3, 7);
+plot(v, i, 'g');
+xlabel('Voltage (V)');
+ylabel('Current (A)');
+title('Current vs Voltage');
