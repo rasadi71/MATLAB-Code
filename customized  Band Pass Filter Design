@@ -1,0 +1,39 @@
+%this code is to design a band pass filter whose f0=71k and lower cutoff frequency=71k-200 and higher cutoff frequency= 71k+200
+clc;
+clear all;
+close all;
+
+% Given parameters
+f0 = 71000;                % Resonant frequency (Hz)
+bw = 400;                  % Bandwidth (Hz)
+L = 23.869e-3;                % Inductance (H)
+
+
+
+num = [0 59.9 0];                % Numerator (band-pass filter)
+den = [23.869e-3 59.9 1/(2.10518e-10)];             % Denominator
+
+% Frequency range for response
+f = linspace(f0 - 1000, f0 + 1000, 1000);  % Frequency range (Hz)
+w = 2 * pi * f;                            % Convert to rad/s
+h = freqs(num, den, w);                    % Frequency response
+
+% Magnitude in dB
+mag = 20 * log10(abs(h));
+
+% Plot frequency response
+figure ;
+semilogx(f, mag, 'b', 'LineWidth', 1.5);
+grid on;
+xlabel('Frequency (Hz)');
+ylabel('Gain (dB)');
+title('Band Pass Filter Frequency Response');
+
+% Add markers for cutoff frequencies
+hold on;
+xline(f0 - 200, '--g', 'LineWidth', 1.2);  % Lower cutoff frequency
+xline(f0 + 200, '--g', 'LineWidth', 1.2);  % Upper cutoff frequency
+yline(-3, '--r', 'LineWidth', 1.2);        % -3 dB cutoff level
+
+legend('Frequency Response', 'Lower Cutoff', 'Upper Cutoff', 'Location', 'Best');
+hold off;
