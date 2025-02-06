@@ -3,5 +3,20 @@ clear all ;
 close all;
 x=[2 3 4 5 6] ;
 y=[212 32 42 52 63];
-plot(x,y)
+plot(x,y)  
 axis([0 9 0 260]) ;
+title('')
+xlabel('')
+ylabel('')
+ lagend()
+
+
+
+
+% use hold on to have multiple figure in the same window 
+ % plot(x,y,'color first latter(e/s/b)') 
+  %plot(x,y,'*-') for different symbol
+%x_1 == x substate 1 
+% x^2 == x to the power 2
+
+
